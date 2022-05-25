@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>可视化-数据中心</title>
     <link rel="stylesheet" href="css/index.css">
+    <script src="./js/echarts.min.js"></script>
+    <script src="./js/map/guizhou.js"></script>
 </head>
 <body scroll="no">
 <div id="particles-js" class="main">
@@ -18,95 +20,63 @@
             </div>
         </div>
         <div class="main-context">
-            <div class="main-context-tab">
-                <div class="content-tab-card" style="margin-right: 20px">
-                    <span>//当前比对数据//</span>
-                    <div style="margin-top: 10px">34234234423</div>
-                    <div class="top" style="width: 20px;height:10px"></div>
-                    <div class="bottom" style="width: 20px;height:10px"></div>
-                </div>
-                <div class="content-tab-main" style="margin-right: 20px">
-                    <div class="content-tab-count">
-                        <div class="tab-count" style="border-right-width: 0">
-                            3657
-                            <div class="top" style="width: 20px;height:10px"></div>
-                        </div>
-                        <div class="tab-text">主体总数</div>
-                    </div>
-                    <div class="content-tab-count">
-                        <div class="tab-count" style="border-left-width: 0">
-                            2645
-                            <div class="bottom" style="width: 20px;height:10px"></div>
-                        </div>
-                        <div class="tab-text">网站总数</div>
-                    </div>
-                </div>
-                <div class="content-tab-card">
-                    <span>//当前比对数据//</span>
-                    <div>34234234423</div>
-                    <div class="top" style="width: 20px;height:10px"></div>
-                    <div class="bottom" style="width: 20px;height:10px"></div>
-                </div>
-            </div>
             <div class="main-context-tab-list">
-                <div class="tab-list-action" style="margin-right:20px">
-                    <div class="tab-list-colors">
-                        <div class="list-colors-title">国企域名TOP9</div>
-                        <div class="list-body">
-                            <div class="list-colors-list" style="margin-top: 0">
-                                <div class="list-colors-item"><div style="width:50%;background:#ab1717"></div><span>阿里云计算有限公司265个</span></div>
-                                <div class="list-colors-item"><div style="width:20%;background:#ce550b"></div><span>阿里云计算有限公司265个</span></div>
-                                <div class="list-colors-item"><div style="width:80%;background:#bb8407"></div><span>阿里云计算有限公司265个</span></div>
-                                <div class="list-colors-item"><div style="width:30%;background:#0bb66f"></div><span>阿里云计算有限公司265个</span></div>
-                                <div class="list-colors-item"><div style="width:70%;background:#a40ea9"></div><span>阿里云计算有限公司265个</span></div>
-                                <div class="list-colors-item"><div style="width:56%;background:#109b91"></div><span>阿里云计算有限公司265个</span></div>
-                                <div class="list-colors-item"><div style="width:23%;background:#bb8407"></div><span>阿里云计算有限公司265个</span></div>
-                                <div class="list-colors-item"><div style="width:84%;background:#109b91"></div><span>阿里云计算有限公司265个</span></div>
-                                <div class="list-colors-item"><div style="width:48%;background:#50af10"></div><span>阿里云计算有限公司265个</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="top" style="width: 20px;height:10px"></div>
-                    <div class="right" style="width: 20px;height:10px"></div>
-                    <div class="left" style="width: 20px;height:10px"></div>
-                    <div class="bottom" style="width: 20px;height:10px"></div>
-                </div>
-                <div class="tab-list-action" style="margin-right:20px">
-                    <div class="tab-list-colors">
-                        <div class="list-colors-title">国企域名TOP9</div>
-                        <div class="list-body">
-                            <div class="list-colors-list" style="margin-top: 0">
-                                <div class="list-colors-item"><div style="width:50%;background:#ab1717"></div><span>阿里云计算有限公司265个</span></div>
-                                <div class="list-colors-item"><div style="width:20%;background:#ce550b"></div><span>阿里云计算有限公司265个</span></div>
-                                <div class="list-colors-item"><div style="width:80%;background:#bb8407"></div><span>阿里云计算有限公司265个</span></div>
-                                <div class="list-colors-item"><div style="width:30%;background:#0bb66f"></div><span>阿里云计算有限公司265个</span></div>
-                                <div class="list-colors-item"><div style="width:70%;background:#a40ea9"></div><span>阿里云计算有限公司265个</span></div>
-                                <div class="list-colors-item"><div style="width:56%;background:#109b91"></div><span>阿里云计算有限公司265个</span></div>
-                                <div class="list-colors-item"><div style="width:23%;background:#bb8407"></div><span>阿里云计算有限公司265个</span></div>
-                                <div class="list-colors-item"><div style="width:84%;background:#109b91"></div><span>阿里云计算有限公司265个</span></div>
-                                <div class="list-colors-item"><div style="width:48%;background:#50af10"></div><span>阿里云计算有限公司265个</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="top" style="width: 20px;height:10px"></div>
-                    <div class="right" style="width: 20px;height:10px"></div>
-                    <div class="left" style="width: 20px;height:10px"></div>
-                    <div class="bottom" style="width: 20px;height:10px"></div>
-                </div>
                 <div class="tab-list-action">
                     <div class="tab-list-colors">
-                        <div class="list-colors-title">国企域名TOP9</div>
+                        <div class="list-colors-title">过期域名TOP</div>
                         <div class="list-body">
                             <div class="list-colors-list" style="margin-top: 0">
-                                <div class="list-colors-item"><div style="width:50%;background:#ab1717"></div><span>阿里云计算有限公司265个</span></div>
-                                <div class="list-colors-item"><div style="width:20%;background:#ce550b"></div><span>阿里云计算有限公司265个</span></div>
-                                <div class="list-colors-item"><div style="width:80%;background:#bb8407"></div><span>阿里云计算有限公司265个</span></div>
-                                <div class="list-colors-item"><div style="width:30%;background:#0bb66f"></div><span>阿里云计算有限公司265个</span></div>
-                                <div class="list-colors-item"><div style="width:70%;background:#a40ea9"></div><span>阿里云计算有限公司265个</span></div>
-                                <div class="list-colors-item"><div style="width:56%;background:#109b91"></div><span>阿里云计算有限公司265个</span></div>
-                                <div class="list-colors-item"><div style="width:23%;background:#bb8407"></div><span>阿里云计算有限公司265个</span></div>
-                                <div class="list-colors-item"><div style="width:84%;background:#109b91"></div><span>阿里云计算有限公司265个</span></div>
-                                <div class="list-colors-item"><div style="width:48%;background:#50af10"></div><span>阿里云计算有限公司265个</span></div>
+<!--                                <div class="list-colors-item"><div style="width:50%;background:#ab1717"></div><span>阿里云计算有限公司265个</span></div>-->
+<!--                                <div class="list-colors-item"><div style="width:20%;background:#ce550b"></div><span>阿里云计算有限公司265个</span></div>-->
+<!--                                <div class="list-colors-item"><div style="width:80%;background:#bb8407"></div><span>阿里云计算有限公司265个</span></div>-->
+<!--                                <div class="list-colors-item"><div style="width:30%;background:#0bb66f"></div><span>阿里云计算有限公司265个</span></div>-->
+<!--                                <div class="list-colors-item"><div style="width:70%;background:#a40ea9"></div><span>阿里云计算有限公司265个</span></div>-->
+<!--                                <div class="list-colors-item"><div style="width:56%;background:#109b91"></div><span>阿里云计算有限公司265个</span></div>-->
+<!--                                <div class="list-colors-item"><div style="width:23%;background:#bb8407"></div><span>阿里云计算有限公司265个</span></div>-->
+<!--                                <div class="list-colors-item"><div style="width:84%;background:#109b91"></div><span>阿里云计算有限公司265个</span></div>-->
+<!--                                <div class="list-colors-item"><div style="width:48%;background:#50af10"></div><span>阿里云计算有限公司265个</span></div>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top" style="width: 20px;height:10px"></div>
+                    <div class="right" style="width: 20px;height:10px"></div>
+                    <div class="left" style="width: 20px;height:10px"></div>
+                    <div class="bottom" style="width: 20px;height:10px"></div>
+                </div>
+                <div class="content-center" style="margin: 0 20px">
+                    <div class="content-tab-main">
+                        <div class="content-tab-count">
+                            <div class="tab-count" style="border-right-width: 0">
+                                3657
+                                <div class="top" style="width: 20px;height:10px"></div>
+                            </div>
+                            <div class="tab-text">主体总数</div>
+                        </div>
+                        <div class="content-tab-count">
+                            <div class="tab-count" style="border-left-width: 0">
+                                2645
+                                <div class="bottom" style="width: 20px;height:10px"></div>
+                            </div>
+                            <div class="tab-text">网站总数</div>
+                        </div>
+                    </div>
+                    <div id="mapadd"></div>
+                </div>
+
+                <div class="tab-list-action">
+                    <div class="tab-list-colors">
+                        <div class="list-colors-title">违规站点TOP</div>
+                        <div class="list-body">
+                            <div class="list-colors-list" style="margin-top: 0">
+<!--                                <div class="list-colors-item"><div style="width:50%;background:#ab1717"></div><span>阿里云计算有限公司265个</span></div>-->
+<!--                                <div class="list-colors-item"><div style="width:20%;background:#ce550b"></div><span>阿里云计算有限公司265个</span></div>-->
+<!--                                <div class="list-colors-item"><div style="width:80%;background:#bb8407"></div><span>阿里云计算有限公司265个</span></div>-->
+<!--                                <div class="list-colors-item"><div style="width:30%;background:#0bb66f"></div><span>阿里云计算有限公司265个</span></div>-->
+<!--                                <div class="list-colors-item"><div style="width:70%;background:#a40ea9"></div><span>阿里云计算有限公司265个</span></div>-->
+<!--                                <div class="list-colors-item"><div style="width:56%;background:#109b91"></div><span>阿里云计算有限公司265个</span></div>-->
+<!--                                <div class="list-colors-item"><div style="width:23%;background:#bb8407"></div><span>阿里云计算有限公司265个</span></div>-->
+<!--                                <div class="list-colors-item"><div style="width:84%;background:#109b91"></div><span>阿里云计算有限公司265个</span></div>-->
+<!--                                <div class="list-colors-item"><div style="width:48%;background:#50af10"></div><span>阿里云计算有限公司265个</span></div>-->
                             </div>
                         </div>
                     </div>
@@ -122,9 +92,8 @@
 </body>
 </html>
 <script src="./js/jquery.min.js"></script>
-<script type="text/javascript" src="js/dataScoll.js"></script>
-<script type="text/javascript" src="js/particles.min.js"></script>
-<script type="text/javascript" src="js/app.js"></script>
+<script src="./js/request.js"></script>
+<script src="./js/create-echarts.js"></script>
 <script type="text/javascript">
     function showTime() {
         var date = new Date();
@@ -140,39 +109,9 @@
         document.getElementById("header-time").innerHTML = current;
     }
     setInterval("showTime()", 1000);//每隔1000毫秒（即1秒）显示一次当前时间
-
 </script>
 <script type="text/javascript">
-    var baseUrl = "http://dev.icpdata.com/home/default/";
-    var RequestApi = function ({url,type }) {
-        $.ajax({
-            url: `${baseUrl}${url}`,
-            type: type,
-            // headers: {
-            //     'X-Access-Token': 'eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MTM5MTk0MDI2NzQ2ODc4NzcxMiwidXNlcm5hbWUiOiLmtYvor5XnrqHnkIblkZgiLCJyb2xlTmFtZSI6ImJ1c2luZXNzX3N5c3RlbV9hZG1pbiIsInVzZXJUeXBlIjowLCJidXNpbmVzc0lkIjoxMzkxNTk0MjkzMTQ3ODY1MDg4LCJvcmdhbml6YXRpb25JZCI6MTM5MTU5NDI5MzIwMjM5MTA0MCwiZGV2aWNlVHlwZSI6OTksImV4cCI6MTY4MzYwMTkwMX0.XIds8YwG9wo3zX7MstpjfMCkc8SuOpbPe1XYL7JVXKk'
-            // },
-            data: {},
-            success: function(result) {  //这里就是我出错的地方
-                console.log('result', result);
-            },
-            error: function(error) {
-                console.log('error', error);
-            }
-        });
-    }
-    $("html").ready(function (){
-        RequestApi({url: "violation-top",type:"GET",})
-    })
-</script>
-<script type="text/javascript">
-    let listColorsList1 = document.getElementsByClassName("list-colors-list")[0];
-    let listColorsList2 = document.getElementsByClassName("list-colors-list")[1];
-    let listColorsList3 = document.getElementsByClassName("list-colors-list")[2];
-
-    /**
-     *  author: Gerric
-     *  Dom工作器
-     */
+    let listColorsTitle = document.getElementsByClassName("list-colors-title");
     var createDom = function ({dom, className, style, text, onClick}) {
         const content = document.createElement(dom);
         content.className = className;
@@ -183,7 +122,82 @@
             content.textContent = text;
         }
         if (onClick) {
-            content.addEventListener("click", (e) => {
+            content.addEventListener("click", function (e) {
+                return onClick(content)
+            })
+        }
+        return content
+    }
+    var setDomInHTML = function ({index,title, value, width, color}) {
+        var listColors = document.getElementsByClassName("list-colors-list")[index];
+        var div1 = createDom({dom:'div', className:'list-colors-item'});
+        var div2 = createDom({dom:'div', style:`width:${width};background:${color};`});
+        var span1 = createDom({dom:'span', text: title + value + "个"});
+
+        div1.appendChild(div2);
+        div1.appendChild(span1);
+
+        listColors.appendChild(div1);
+    }
+    RequestApi({url: "expired-domain-top", type: "GET", callback: function(res){
+        let expired = [];
+        if (res.code === 200) {
+            for (var i = 0; i < res.data.expire.nums.length; i ++) {
+                let item = res.data.expire.provider[i];
+                expired.push({
+                    title: item.split(':')[0],
+                    value: res.data.expire.nums[i]
+                })
+            }
+        }
+        let count = getArrayValue(expired);
+            listColorsTitle[0].textContent =  listColorsTitle[0].textContent + count;
+        for (var j = 0; j < expired.length; j ++) {
+            setDomInHTML({index: 0, title: expired[j].title, value: expired[j].value, width: (parseInt(expired[j].value) / count * 100) + "%", color: getArrayColor()})
+        }
+    }})
+    RequestApi({url: "violation-top", type: "GET", callback: function(res){
+            let violation = [];
+            if (res.code === 200) {
+                for (var i = 0; i < res.data.violation.nums.length; i ++) {
+                    let item = res.data.violation.provider[i];
+                    violation.push({
+                        title: item.split(':')[0],
+                        value: res.data.violation.nums[i]
+                    })
+                }
+            }
+            let count = getArrayValue(violation);
+            listColorsTitle[1].textContent =  listColorsTitle[1].textContent + count;
+            for (var j = 0; j < violation.length; j ++) {
+                setDomInHTML({index: 1, title: violation[j].title, value: violation[j].value, width: (parseInt(violation[j].value) / count * 100) + "%", color: getArrayColor()})
+            }
+        }})
+    RequestApi({url: "stats-api", type: "GET", callback: function(res){
+        if (res.code === 200) {
+            let tabText = document.getElementsByClassName("tab-count");
+            tabText[0].childNodes[0].textContent = res.data.main_count;
+            tabText[1].childNodes[0].textContent = res.data.domain_count;
+            console.log(tabText[0].childNodes[0])
+        }
+
+    }})
+</script>
+<script type="text/javascript">
+    let listColorsList1 = document.getElementsByClassName("list-colors-list")[0];
+    let listColorsList2 = document.getElementsByClassName("list-colors-list")[1];
+
+    var createDom = function ({dom, className, style, text, onClick}) {
+        const content = document.createElement(dom);
+        content.className = className;
+        if (style) {
+            content.setAttribute("style", style);
+        }
+        if (text) {
+            content.textContent = text;
+        }
+        if (onClick) {
+            content.addEventListener("click", function (e) {
                 return onClick(content)
             })
         }
@@ -206,18 +220,18 @@
 
     var setIntervalStart = function ({dom, num}) {
         var aList = 0;
-        setInterval(() => {
+        setInterval(function () {
             var marginTop = dom.style.marginTop.split("px")[0];
             dom.style.marginTop = `${parseInt(marginTop) - 1}px`;
             if(Math.abs(parseInt(marginTop)) % 10 === 0) {
                 startRotation(aList, num);
                 aList ++
             }
-        }, 100);
+        }, 50);
     }
-    setIntervalStart({dom: listColorsList1, num: 0});
-    setIntervalStart({dom: listColorsList2, num: 1});
-    setIntervalStart({dom: listColorsList3, num: 2});
-
+    setTimeout(function (){
+        setIntervalStart({dom: listColorsList1, num: 0});
+        setIntervalStart({dom: listColorsList2, num: 1});
+    }, 200)
 
 </script>

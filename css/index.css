@@ -92,6 +92,11 @@ body {
     border-radius: 1px;
     box-sizing: border-box;
 }
+.content-center {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
 .content-tab-main {
     position: relative;
     width: 100%;
@@ -152,7 +157,7 @@ body {
 .main-context-tab-list {
     display: flex;
     width: 100%;
-    height: 80%;
+    height: 90%;
     box-sizing: border-box;
     padding: 1rem 2rem;
 }
@@ -160,7 +165,8 @@ body {
     position: relative;
     z-index: 9999;
     width: 100%;
-    padding: 2.5rem 2rem;
+    max-width: 34rem;
+    padding: 1.5rem 2rem;
     height: 100%;
     background-color: rgba(15, 33, 89 ,0.7);
     background-image: url("../images/line.png");
@@ -184,7 +190,7 @@ body {
  }
 .list-colors-title {
     padding: 0 0 1.5rem 0;
-    font-size: 1rem;
+    font-size: 1.5rem;
     color: #ffffff;
 }
 .list-body {
@@ -275,4 +281,9 @@ body {
     bottom: 0;
     left: 0;
     z-index: 0;
+}
+#mapadd {
+    width: 100%;
+    height: 100%;
+    display: flex;
 }
