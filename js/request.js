@@ -4,6 +4,10 @@ var RequestApi = function ({url,type, callback }) {
         url: `${baseUrl}${url}`,
         type: type,
         data: {},
+        crossDomain:true, //设置跨域为true
+        // xhrFields: {
+        //     withCredentials: true //默认情况下，标准的跨域请求是不会发送cookie的
+        // },
         success: function(result) {  //这里就是我出错的地方
             callback(result);
         },

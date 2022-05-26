@@ -112,6 +112,8 @@
 </script>
 <script type="text/javascript">
     let listColorsTitle = document.getElementsByClassName("list-colors-title");
+    let listColorsList1 = document.getElementsByClassName("list-colors-list")[0];
+    let listColorsList2 = document.getElementsByClassName("list-colors-list")[1];
     var createDom = function ({dom, className, style, text, onClick}) {
         const content = document.createElement(dom);
         content.className = className;
@@ -128,6 +130,37 @@
         }
         return content
     }
+    var startRotation = function (num, index) {
+        var listColors = document.getElementsByClassName("list-colors-list")[index];
+        var dom = listColors.children[num];
+        var div1 = createDom({dom:'div', className:'list-colors-item'});
+        var div2style = dom.querySelector("div").style;
+        var div2 = createDom({dom:'div', style:`width:${div2style.width};background:${div2style.background};`});
+        var span1 = createDom({dom:'span', text: dom.querySelector("span").textContent});
+
+        div1.appendChild(div2);
+        div1.appendChild(span1);
+
+        listColors.appendChild(div1);
+    }
+
+    var setIntervalStart = function ({dom, num}) {
+        if (dom.children[num]) {
+            var aList = 0;
+            setInterval(function () {
+                var marginTop = dom.style.marginTop.split("px")[0];
+                dom.style.marginTop = `${parseInt(marginTop) - 1}px`;
+                if(Math.abs(parseInt(marginTop)) % 10 === 0) {
+                    startRotation(aList, num);
+                    aList ++
+                }
+            }, 50);
+        } else {
+            var div = createDom({dom:'div', className:'noneList', text: '没有数据~~', style: "padding: 30px;font-size: 1.5rem;text-align: center;font-weight: 700;color: white;"});
+            dom.appendChild(div);
+        }
+    }
+
     var setDomInHTML = function ({index,title, value, width, color}) {
         var listColors = document.getElementsByClassName("list-colors-list")[index];
         var div1 = createDom({dom:'div', className:'list-colors-item'});
@@ -136,7 +169,6 @@
 
         div1.appendChild(div2);
         div1.appendChild(span1);
-
         listColors.appendChild(div1);
     }
     RequestApi({url: "expired-domain-top", type: "GET", callback: function(res){
@@ -155,7 +187,9 @@
         for (var j = 0; j < expired.length; j ++) {
             setDomInHTML({index: 0, title: expired[j].title, value: expired[j].value, width: (parseInt(expired[j].value) / count * 100) + "%", color: getArrayColor()})
         }
-    }})
+        console.log(444)
+            setIntervalStart({dom: listColorsList1, num: 0});
+        }})
     RequestApi({url: "violation-top", type: "GET", callback: function(res){
             let violation = [];
             if (res.code === 200) {
@@ -172,66 +206,14 @@
             for (var j = 0; j < violation.length; j ++) {
                 setDomInHTML({index: 1, title: violation[j].title, value: violation[j].value, width: (parseInt(violation[j].value) / count * 100) + "%", color: getArrayColor()})
             }
+            console.log(555)
+            setIntervalStart({dom: listColorsList2, num: 1});
         }})
     RequestApi({url: "stats-api", type: "GET", callback: function(res){
         if (res.code === 200) {
             let tabText = document.getElementsByClassName("tab-count");
             tabText[0].childNodes[0].textContent = res.data.main_count;
             tabText[1].childNodes[0].textContent = res.data.domain_count;
-            console.log(tabText[0].childNodes[0])
         }
-
     }})
-</script>
-<script type="text/javascript">
-    let listColorsList1 = document.getElementsByClassName("list-colors-list")[0];
-    let listColorsList2 = document.getElementsByClassName("list-colors-list")[1];
-
-    var createDom = function ({dom, className, style, text, onClick}) {
-        const content = document.createElement(dom);
-        content.className = className;
-        if (style) {
-            content.setAttribute("style", style);
-        }
-        if (text) {
-            content.textContent = text;
-        }
-        if (onClick) {
-            content.addEventListener("click", function (e) {
-                return onClick(content)
-            })
-        }
-        return content
-    }
-
-    var startRotation = function (num, index) {
-        var listColors = document.getElementsByClassName("list-colors-list")[index];
-        var dom = listColors.children[num];
-        var div1 = createDom({dom:'div', className:'list-colors-item'});
-        var div2style = dom.querySelector("div").style;
-        var div2 = createDom({dom:'div', style:`width:${div2style.width};background:${div2style.background};`});
-        var span1 = createDom({dom:'span', text: dom.querySelector("span").textContent});
-
-        div1.appendChild(div2);
-        div1.appendChild(span1);
-
-        listColors.appendChild(div1);
-    }
-
-    var setIntervalStart = function ({dom, num}) {
-        var aList = 0;
-        setInterval(function () {
-            var marginTop = dom.style.marginTop.split("px")[0];
-            dom.style.marginTop = `${parseInt(marginTop) - 1}px`;
-            if(Math.abs(parseInt(marginTop)) % 10 === 0) {
-                startRotation(aList, num);
-                aList ++
-            }
-        }, 50);
-    }
-    setTimeout(function (){
-        setIntervalStart({dom: listColorsList1, num: 0});
-        setIntervalStart({dom: listColorsList2, num: 1});
-    }, 200)
-
 </script>
