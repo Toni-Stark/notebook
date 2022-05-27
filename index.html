@@ -25,7 +25,7 @@
                     <div class="tab-list-colors">
                         <div class="list-colors-title">过期域名TOP</div>
                         <div class="list-body">
-                            <div class="list-colors-list" style="margin-top: 0">
+                            <div class="list-colors-list" style="margin-top: 0rem;transform: translateY(-4rem)">
                                 <div class="list-colors-item"><div style="width:50%;background:#ab1717"></div><span>阿里云计算有限公司265个</span></div>
                                 <div class="list-colors-item"><div style="width:20%;background:#ce550b"></div><span>阿里云计算有限公司265个</span></div>
                                 <div class="list-colors-item"><div style="width:80%;background:#bb8407"></div><span>阿里云计算有限公司265个</span></div>
@@ -35,6 +35,11 @@
                                 <div class="list-colors-item"><div style="width:23%;background:#bb8407"></div><span>阿里云计算有限公司265个</span></div>
                                 <div class="list-colors-item"><div style="width:84%;background:#109b91"></div><span>阿里云计算有限公司265个</span></div>
                                 <div class="list-colors-item"><div style="width:48%;background:#50af10"></div><span>阿里云计算有限公司265个</span></div>
+                                <div class="list-colors-item"><div style="width:70%;background:#a40ea9"></div><span>阿里云计算有限公司265个</span></div>
+                                <div class="list-colors-item"><div style="width:23%;background:#bb8407"></div><span>阿里云计算有限公司265个</span></div>
+                                <div class="list-colors-item"><div style="width:80%;background:#bb8407"></div><span>阿里云计算有限公司265个</span></div>
+                                <div class="list-colors-item"><div style="width:84%;background:#109b91"></div><span>阿里云计算有限公司265个</span></div>
+                                <div class="list-colors-item"><div style="width:20%;background:#ce550b"></div><span>阿里云计算有限公司265个</span></div>
                             </div>
                         </div>
                     </div>
@@ -67,8 +72,8 @@
                     <div class="tab-list-colors">
                         <div class="list-colors-title">违规站点TOP</div>
                         <div class="list-body">
-                            <div class="list-colors-list" style="margin-top: 0">
-                                <div class="list-colors-item"><div style="width:50%;background:#ab1717"></div><span>阿里云计算有限公司265个</span></div>
+                            <div class="list-colors-list" style="margin-top: 0rem;transform: translateY(-4rem)">
+                            <div class="list-colors-item"><div style="width:50%;background:#ab1717"></div><span>阿里云计算有限公司265个</span></div>
                                 <div class="list-colors-item"><div style="width:20%;background:#ce550b"></div><span>阿里云计算有限公司265个</span></div>
                                 <div class="list-colors-item"><div style="width:80%;background:#bb8407"></div><span>阿里云计算有限公司265个</span></div>
                                 <div class="list-colors-item"><div style="width:30%;background:#0bb66f"></div><span>阿里云计算有限公司265个</span></div>
@@ -76,7 +81,11 @@
                                 <div class="list-colors-item"><div style="width:56%;background:#109b91"></div><span>阿里云计算有限公司265个</span></div>
                                 <div class="list-colors-item"><div style="width:23%;background:#bb8407"></div><span>阿里云计算有限公司265个</span></div>
                                 <div class="list-colors-item"><div style="width:84%;background:#109b91"></div><span>阿里云计算有限公司265个</span></div>
+                                <div class="list-colors-item"><div style="width:56%;background:#109b91"></div><span>阿里云计算有限公司265个</span></div>
                                 <div class="list-colors-item"><div style="width:48%;background:#50af10"></div><span>阿里云计算有限公司265个</span></div>
+                                <div class="list-colors-item"><div style="width:80%;background:#bb8407"></div><span>阿里云计算有限公司265个</span></div>
+                                <div class="list-colors-item"><div style="width:56%;background:#109b91"></div><span>阿里云计算有限公司265个</span></div>
+                                <div class="list-colors-item"><div style="width:56%;background:#109b91"></div><span>阿里云计算有限公司265个</span></div>
                             </div>
                         </div>
                     </div>
@@ -92,9 +101,7 @@
 </body>
 </html>
 <script src="./js/jquery.min.js"></script>
-<!--<script src="./js/request.js"></script>-->
-<!--<script src="./js/create-echarts.js"></script>-->
-<script type="text/javascript">
+<script>
     function showTime() {
         var date = new Date();
         var year = date.getFullYear();
@@ -110,7 +117,7 @@
     }
     setInterval("showTime()", 1000);//每隔1000毫秒（即1秒）显示一次当前时间
 </script>
-<script type="text/javascript">
+<script>
     let listColorsTitle = document.getElementsByClassName("list-colors-title");
     let listColorsList1 = document.getElementsByClassName("list-colors-list")[0];
     let listColorsList2 = document.getElementsByClassName("list-colors-list")[1];
@@ -130,9 +137,9 @@
         }
         return content
     }
-    var startRotation = function (num, index) {
+    var startRotation = function (index) {
         var listColors = document.getElementsByClassName("list-colors-list")[index];
-        var dom = listColors.children[num];
+        var dom = listColors.children[0];
         var div1 = createDom({dom:'div', className:'list-colors-item'});
         var div2style = dom.querySelector("div").style;
         var div2 = createDom({dom:'div', style:'width:' + div2style.width + ';background:' + div2style.background + ';'});
@@ -144,23 +151,28 @@
         listColors.appendChild(div1);
     }
 
+    var delElement = function (dom) {
+        let firstChild = dom.children[0];
+        dom.removeChild(firstChild);
+    }
     var setIntervalStart = function (data) {
         if (data.dom.children[data.num]) {
-            var aList = 0;
             setInterval(function () {
-                var marginTop = data.dom.style.marginTop.split("px")[0];
-                data.dom.style.marginTop = parseInt(marginTop) - 1 + 'px';
-                if(Math.abs(parseInt(marginTop)) % 10 === 0) {
-                    startRotation(aList, data.num);
-                    aList ++
+                var marginTop = data.dom.style.marginTop.split("rem")[0];
+                data.dom.style.marginTop = parseInt(marginTop*10)/10 - 0.1 + 'rem';
+                if(Math.abs(parseInt(marginTop*10)/10) % 4 === 0) {
+                    data.dom.style.marginTop = parseInt(marginTop*10)/10 + 3.8 + 'rem';
+                    delElement(data.dom);
+                    startRotation(data.num);
                 }
-            }, 50);
+            }, 70);
         } else {
             var div = createDom({dom:'div', className:'noneList', text: '没有数据~~', style: "padding: 30px;font-size: 1.5rem;text-align: center;font-weight: 700;color: white;"});
             data.dom.appendChild(div);
         }
     }
     setIntervalStart({dom: listColorsList1, num: 0});
+    setIntervalStart({dom: listColorsList2, num: 1});
 
     // var setDomInHTML = function ({index,title, value, width, color}) {
     //     var listColors = document.getElementsByClassName("list-colors-list")[index];
@@ -172,6 +184,9 @@
     //     div1.appendChild(span1);
     //     listColors.appendChild(div1);
     // }
+    /**
+     * 过期域名API;
+     */
     // RequestApi({url: "expired-domain-top", type: "GET", callback: function(res){
     //     let expired = [];
     //     if (res.code === 200) {
@@ -190,6 +205,10 @@
     //     }
     //     setIntervalStart({dom: listColorsList1, num: 0});
     // }})
+
+    /**
+     * 违规站点API;
+     */
     // RequestApi({url: "violation-top", type: "GET", callback: function(res){
     //     let violation = [];
     //     if (res.code === 200) {
@@ -208,6 +227,9 @@
     //     }
     //     setIntervalStart({dom: listColorsList2, num: 1});
     // }})
+    /**
+     * 主体总数API;
+     */
     // RequestApi({url: "stats-api", type: "GET", callback: function(res){
     //     if (res.code === 200) {
     //         let tabText = document.getElementsByClassName("tab-count");
@@ -217,6 +239,9 @@
     // }})
 </script>
 <script>
+    /**
+     * 地图API 以及生成地图;
+     */
     // var data = [];
     // RequestApi({url: "map-data",type:"GET", callback: function(res){
     //         if(res.code === 200) {
@@ -241,7 +266,6 @@
     //                 })
     //             }
     //         }
-    //         console.log(data)
     //         setCanvasMap(data);
     //     }})
     var setCanvasMap = function (data) {
@@ -287,6 +311,7 @@
         };
         myChart.setOption(option);
     }
+    // 地图假数据；
     setCanvasMap([
         {name: '铜仁地区', itemStyle: {normal: {areaColor: '#31398f', borderColor: '#35ff9c'}}, value: 2},
         {name: '遵义市', itemStyle: {normal: {areaColor: '#31398f', borderColor: '#35ff9c'}}, value: 2},
