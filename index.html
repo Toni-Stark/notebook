@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>可视化-数据中心</title>
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="./css/index.css">
     <script src="./js/echarts.min.js"></script>
     <script src="./js/map/guizhou.js"></script>
 </head>
@@ -25,7 +25,7 @@
                     <div class="tab-list-colors">
                         <div class="list-colors-title">过期域名TOP</div>
                         <div class="list-body">
-                            <div class="list-colors-list" style="margin-top: 0rem;transform: translateY(-4rem)">
+                            <div class="list-colors-list" style="margin-top: 0px;transform: translateY(-20px)">
                                 <div class="list-colors-item"><div style="width:50%;background:#ab1717"></div><span>阿里云计算有限公司265个</span></div>
                                 <div class="list-colors-item"><div style="width:20%;background:#ce550b"></div><span>阿里云计算有限公司265个</span></div>
                                 <div class="list-colors-item"><div style="width:80%;background:#bb8407"></div><span>阿里云计算有限公司265个</span></div>
@@ -48,7 +48,7 @@
                     <div class="left" style="width: 20px;height:10px"></div>
                     <div class="bottom" style="width: 20px;height:10px"></div>
                 </div>
-                <div class="content-center" style="margin: 0 20px">
+                <div class="content-center" style="margin: 0 0.2rem;">
                     <div class="content-tab-main">
                         <div class="content-tab-count">
                             <div class="tab-count" style="border-right-width: 0">
@@ -65,14 +65,25 @@
                             <div class="tab-text">网站总数</div>
                         </div>
                     </div>
-                    <div id="mapadd"></div>
-                </div>
+                    <div  class="position-map">
+                        <div id="mapadd">
 
+                        </div>
+                        <div class="map">
+                            <div class="transition">
+                                <div class="map1"></div>
+                                <div class="map2"></div>
+                                <div class="map3"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
                 <div class="tab-list-action">
                     <div class="tab-list-colors">
                         <div class="list-colors-title">违规站点TOP</div>
                         <div class="list-body">
-                            <div class="list-colors-list" style="margin-top: 0rem;transform: translateY(-4rem)">
+                            <div class="list-colors-list" style="margin-top: 0px;transform: translateY(-20px)">
                             <div class="list-colors-item"><div style="width:50%;background:#ab1717"></div><span>阿里云计算有限公司265个</span></div>
                                 <div class="list-colors-item"><div style="width:20%;background:#ce550b"></div><span>阿里云计算有限公司265个</span></div>
                                 <div class="list-colors-item"><div style="width:80%;background:#bb8407"></div><span>阿里云计算有限公司265个</span></div>
@@ -155,17 +166,25 @@
         let firstChild = dom.children[0];
         dom.removeChild(firstChild);
     }
+    let a = false;
+    let margin = '';
+
     var setIntervalStart = function (data) {
         if (data.dom.children[data.num]) {
             setInterval(function () {
-                var marginTop = data.dom.style.marginTop.split("rem")[0];
-                data.dom.style.marginTop = parseInt(marginTop*10)/10 - 0.1 + 'rem';
-                if(Math.abs(parseInt(marginTop*10)/10) % 4 === 0) {
-                    data.dom.style.marginTop = parseInt(marginTop*10)/10 + 3.8 + 'rem';
+                let ht = document.querySelector("html").style.fontSize.split('px')[0];
+                var marginTop = data.dom.style.marginTop.split("px")[0];
+                    data.dom.style.marginTop = marginTop - 1 + 'px';
+                if (!a) {
+                    margin = marginTop - 1;
+                }
+                if(marginTop != 0 && Math.abs(marginTop) % parseInt(ht*0.5)=== 0) {
+                    a = margin === marginTop;
+                    data.dom.style.marginTop = Number(marginTop) + parseInt(ht*0.5) + 'px';
                     delElement(data.dom);
                     startRotation(data.num);
                 }
-            }, 70);
+            }, 100);
         } else {
             var div = createDom({dom:'div', className:'noneList', text: '没有数据~~', style: "padding: 30px;font-size: 1.5rem;text-align: center;font-weight: 700;color: white;"});
             data.dom.appendChild(div);
@@ -280,7 +299,7 @@
                 type: 'map',
                 mapType: '贵州',
                 roam: false,
-                top:'8%',
+                top:'middle',
                 zoom:1.2,
                 x:'10%',
                 selectedMode : 'single',
@@ -319,4 +338,18 @@
         {name: '六盘水市', itemStyle: {normal: {areaColor: '#31398f', borderColor: '#35ff9c'}}, value: 2},
         {name: '黔东南苗族侗族自治州', itemStyle: {normal: {areaColor: '#31398f', borderColor: '#35ff9c'}}, value: 2}
     ]);
+</script>
+<script>
+    let width = window.screen.width / 1240 * 100;
+    let html = document.querySelector("html");
+    html.style.fontSize = width + "px";
+    console.log(width, window.screen.width)
+    let watchWindowSize = (e) => {
+        let html = document.querySelector("html");
+        let screenWidth = e.currentTarget.screen.width;
+        let rem = screenWidth / 1240 * 100;
+        html.style.fontSize = rem + "px";
+    };
+
+    window.addEventListener("resize", watchWindowSize);
 </script>
