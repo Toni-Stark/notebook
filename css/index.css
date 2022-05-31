@@ -121,6 +121,16 @@ body {
     align-items: center;
     width: 100%;
 }
+.content-tab-border {
+    height: 0.5rem;
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+}
+.content-tab-right-border {
+    border-right: 1px solid #07379b;
+    height: 50px;
+}
 .tab-count {
     position: relative;
     display: flex;
