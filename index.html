@@ -116,7 +116,7 @@
 </body>
 </html>
 <script src="./js/jquery.min.js"></script>
-<script>
+<script type="text/javascript">
     function showTime() {
         var date = new Date();
         var year = date.getFullYear();
@@ -131,7 +131,7 @@
     }
     setInterval("showTime()", 1000);//每隔1000毫秒（即1秒）显示一次当前时间
 </script>
-<script>
+<script type="text/javascript">
     let listColorsTitle = document.getElementsByClassName("list-colors-title");
     let listColorsList1 = document.getElementsByClassName("list-colors-list")[0];
     let listColorsList2 = document.getElementsByClassName("list-colors-list")[1];
@@ -260,7 +260,7 @@
     //     }
     // }})
 </script>
-<script>
+<script type="text/javascript">
     /**
      * 地图API 以及生成地图;
      */
@@ -347,14 +347,15 @@
         enableRotate: false,    // 禁止地图旋转和倾斜可以通过配置项进行设置
         enableTilt: false,      // 禁止地图旋转和倾斜可以通过配置项进行设置
     });
-    var starIcon = new BMapGL.Icon("./common/image/star.png", new BMapGL.Size(23,23), {});
     var mainPoint = new BMapGL.Point(113.34307,23.30290);
-        map.centerAndZoom(mainPoint, 12);
+    map.centerAndZoom(mainPoint, 12);
+    map.setMapStyleV2({
+        styleId: 'a6f42e9a956fd60d72ab01e6095b2aaa'
+    })
+    var starIcon = new BMapGL.Icon("./common/image/star.png", new BMapGL.Size(23,23), {});
+
     var markerMain = new BMapGL.Marker(mainPoint, {icon: starIcon});
         map.addOverlay(markerMain);
-    $.getJSON('./common/style/mapStyle2.json', function (data) {
-        map.setMapStyleV2({styleJson:data});
-    })
         map.setHeading(0);
         map.setTilt(43);
         map.setZoom(12);        // 再次设置地图级别
@@ -378,7 +379,7 @@
                 color: 'rgb(255, 255, 255)',
                 width: '100px',
                 borderRadius: '4px',
-                textAlign: 'center',
+                textAlign: 'left',
                 marginLeft: '-50px'
             })
         }
